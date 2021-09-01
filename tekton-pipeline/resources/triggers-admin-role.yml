@@ -12,6 +12,7 @@ rules:
   - triggertemplates
   verbs:
   - get
+  - list
 - apiGroups:
   - tekton.dev
   resources:
