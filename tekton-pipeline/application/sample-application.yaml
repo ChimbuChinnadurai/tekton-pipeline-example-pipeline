@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: devops-paradox
+  name: game-2048
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -15,7 +15,3 @@ spec:
   destination:
     namespace: game-2048
     server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      selfHeal: false
-      prune: false
