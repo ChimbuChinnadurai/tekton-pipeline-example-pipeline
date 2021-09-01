@@ -37,7 +37,7 @@ spec:
       params:
       - name: url
         # Replace <docker_registry_name> with your docker registry name (e.g. my-acr.azurecr.io)
-        value: "https://registry.hub.docker.com/r/simbu1290/gcp-test"
+        value: "https://registry.hub.docker.com/simbu1290/gcp-test"
       type: image
   - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
@@ -85,7 +85,7 @@ spec:
   - bindings:
     - ref: tekton-argocd-example-build-git-tb
     template:
-      name: tekton-argocd-example-build-tt
+      ref: tekton-argocd-example-build-tt
 
 ---
 
