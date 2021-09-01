@@ -14,4 +14,4 @@ spec:
     targetRevision: HEAD
   destination:
     namespace: game-2048
-    server: https://kubernetes.default.svc
+    name: in-cluster
