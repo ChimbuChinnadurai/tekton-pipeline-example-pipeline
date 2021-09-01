@@ -8,7 +8,7 @@ spec:
   - name: git-app-repo-name
   - name: git-app-repo-revision
   resourcetemplates:
-  - apiVersion: tekton.dev/v1beta1
+  - apiVersion: tekton.dev/v1alpha1
     kind: PipelineResource
     metadata:
       name: git-app-repo-$(uid)
@@ -25,7 +25,7 @@ spec:
       - name: git-app-repo-name
         value: $(tt.params.git-app-repo-name)
       type: git
-  - apiVersion: tekton.dev/v1beta1
+  - apiVersion: tekton.dev/v1alpha1
     kind: PipelineResource
     metadata:
       name: image-registry-$(uid)
