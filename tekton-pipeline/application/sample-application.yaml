@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-paradox
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    path: kustomize
+    repoURL: https://github.com/ChimbuChinnadurai/tekton-pipeline-example-app.git
+    targetRevision: HEAD
+  destination:
+    namespace: game-2048
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: false
+      prune: false
