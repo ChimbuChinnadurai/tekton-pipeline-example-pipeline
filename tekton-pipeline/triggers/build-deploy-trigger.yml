@@ -90,7 +90,7 @@ spec:
       spec:
         template:
           spec:
-            serviceAccountName: tekton-triggers-admin
+            serviceAccountName: tekton-triggers-admin-1
 
 ---
 
