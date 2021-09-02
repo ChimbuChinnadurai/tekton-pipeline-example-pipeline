@@ -1,4 +1,4 @@
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: tekton-argocd-example-build-tt
@@ -37,9 +37,9 @@ spec:
       params:
       - name: url
         # Replace <docker_registry_name> with your docker registry name (e.g. my-acr.azurecr.io)
-        value: "https://registry.hub.docker.com/simbu1290/gcp-test"
+        value: https://registry.hub.docker.com
       type: image
-  - apiVersion: tekton.dev/v1beta1
+  - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
     metadata:
       generateName: tekton-argocd-example-build-deploy-pipeline-run-
@@ -61,7 +61,7 @@ spec:
 
 --- 
 
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: tekton-argocd-example-build-git-tb
@@ -75,24 +75,29 @@ spec:
 
 ---
 
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: tekton-argocd-example-build-el
 spec:
-  serviceAccountName: tekton-triggers-admin
   triggers:
   - bindings:
     - ref: tekton-argocd-example-build-git-tb
     template:
       ref: tekton-argocd-example-build-tt
+  resources:
+    kubernetesResource:
+      spec:
+        template:
+          spec:
+            serviceAccountName: tekton-triggers-admin
 
 ---
 
 apiVersion: getambassador.io/v2
 kind: Mapping
 metadata:
-  name: tekton-argocd-example-build-el-mapping
+  name: tekton-argocd-example-build-el-1-mapping
 spec:
   prefix: /tekton-argocd-example-build-mapping/
   service: el-tekton-argocd-example-build-el:8080
