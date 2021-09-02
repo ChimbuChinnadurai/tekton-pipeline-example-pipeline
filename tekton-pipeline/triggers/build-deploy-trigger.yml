@@ -1,4 +1,4 @@
-apiVersion: triggers.tekton.dev/v1beta1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
   name: tekton-argocd-example-build-tt
@@ -61,7 +61,7 @@ spec:
 
 --- 
 
-apiVersion: triggers.tekton.dev/v1beta1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
   name: tekton-argocd-example-build-git-tb
@@ -75,7 +75,7 @@ spec:
 
 ---
 
-apiVersion: triggers.tekton.dev/v1beta1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
   name: tekton-argocd-example-build-el
@@ -97,7 +97,7 @@ spec:
 apiVersion: getambassador.io/v2
 kind: Mapping
 metadata:
-  name: tekton-argocd-example-build-el-1-mapping
+  name: tekton-argocd-example-build-el-mapping
 spec:
   prefix: /tekton-argocd-example-build-mapping/
   service: el-tekton-argocd-example-build-el:8080
