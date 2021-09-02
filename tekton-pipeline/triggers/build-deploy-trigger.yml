@@ -83,12 +83,12 @@ spec:
   triggers:
   - name: github-listener
     interceptors:
-    - ref:
-      	name: "github"
-      	kind: ClusterInterceptor
-      	apiVersion: triggers.tekton.dev
-  - bindings:
-    - ref: tekton-argocd-example-build-git-tb
+      - ref:
+      	  name: "github"
+      	  kind: ClusterInterceptor
+      	  apiVersion: triggers.tekton.dev
+    bindings:
+      - ref: tekton-argocd-example-build-git-tb
     template:
       ref: tekton-argocd-example-build-tt
   resources:
