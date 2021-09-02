@@ -12,6 +12,7 @@ rules:
   - triggertemplates
   - triggers
   - clustertriggerbindings
+  - clusterinterceptors
   verbs:
   - get
 - apiGroups:
