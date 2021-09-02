@@ -80,6 +80,7 @@ kind: EventListener
 metadata:
   name: tekton-argocd-example-build-el
 spec:
+  serviceAccountName: tekton-triggers-admin-1
   triggers:
   - name: github-listener
     interceptors:
@@ -91,12 +92,6 @@ spec:
       - ref: tekton-argocd-example-build-git-tb
     template:
       ref: tekton-argocd-example-build-tt
-  resources:
-    kubernetesResource:
-      spec:
-        template:
-          spec:
-            serviceAccountName: tekton-triggers-admin-1
 
 ---
 
