@@ -15,6 +15,7 @@ rules:
   - clusterinterceptors
   verbs:
   - get
+  - list
 - apiGroups:
   - tekton.dev
   resources:
