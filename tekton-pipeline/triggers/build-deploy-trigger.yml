@@ -82,16 +82,16 @@ metadata:
 spec:
   serviceAccountName: tekton-triggers-admin-1
   triggers:
-  - name: github-listener
-    interceptors:
-      - ref:
-      	  name: "github"
-      	  kind: ClusterInterceptor
-      	  apiVersion: triggers.tekton.dev
-    bindings:
-      - ref: tekton-argocd-example-build-git-tb
-    template:
-      ref: tekton-argocd-example-build-tt
+    - name: github-listener
+      interceptors:
+        - ref:
+      	    name: "github"
+      	    kind: ClusterInterceptor
+      	    apiVersion: triggers.tekton.dev
+      bindings:
+        - ref: tekton-argocd-example-build-git-tb
+      template:
+        ref: tekton-argocd-example-build-tt
 
 ---
 
