@@ -38,7 +38,7 @@ spec:
       params:
       - name: url
         # Replace <docker_registry_name> with your docker registry name (e.g. my-acr.azurecr.io)
-        value: https://index.docker.io/v1/
+        value: https://index.docker.io/v1
       type: image
   - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
