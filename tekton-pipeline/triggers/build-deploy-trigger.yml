@@ -9,7 +9,7 @@ spec:
   - name: git-app-repo-name
   - name: git-app-repo-revision
   resourcetemplates:
-  - apiVersion: tekton.dev/v1alpha1
+  - apiVersion: tekton.dev/v1beta1
     kind: PipelineResource
     metadata:
       name: git-app-repo-$(uid)
@@ -26,7 +26,7 @@ spec:
       - name: git-app-repo-name
         value: $(tt.params.git-app-repo-name)
       type: git
-  - apiVersion: tekton.dev/v1alpha1
+  - apiVersion: tekton.dev/v1beta1
     kind: PipelineResource
     metadata:
       name: image-registry-$(uid)
@@ -40,7 +40,7 @@ spec:
         # Replace <docker_registry_name> with your docker registry name (e.g. my-acr.azurecr.io)
         value: https://index.docker.io/v1
       type: image
-  - apiVersion: tekton.dev/v1alpha1
+  - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
       generateName: tekton-argocd-example-build-deploy-pipeline-run-
