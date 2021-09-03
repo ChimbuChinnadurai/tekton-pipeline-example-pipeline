@@ -29,7 +29,7 @@ spec:
       image: gcr.io/kaniko-project/executor:latest
       env:
         - name: "DOCKER_CONFIG"
-          value: "/tekton/home/.docker"
+          value: "/builder/home/.docker/"
       command:
         - /kaniko/executor
       args:
