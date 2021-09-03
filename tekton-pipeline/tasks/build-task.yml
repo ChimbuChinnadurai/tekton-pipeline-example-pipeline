@@ -30,10 +30,6 @@ spec:
           name: build-task-configmap
   steps:
     - name: build-and-push
-      image: gcr.io/kaniko-project/executor:latest
+      image: busybox:latest
       command:
-        - /kaniko/executor
-      args:
-        - --dockerfile=$(params.pathToContext)/$(params.pathToDockerFile)
-        - --destination=$(resources.outputs.image-registry.url)/$(DOCKER_NAMESPACE)/$(DOCKER_IMAGE_NAME):$(DOCKER_TAG)
-        - --context=$(params.pathToContext)
+        - whoami
