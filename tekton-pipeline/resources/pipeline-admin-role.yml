@@ -6,6 +6,7 @@ metadata:
 secrets:
   - name: basic-docker-user-pass
   - name: basic-git-app-repo-user-pass
+  - name: dockerhub-auth
 
 ---
 kind: Role
