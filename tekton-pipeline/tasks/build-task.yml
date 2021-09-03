@@ -30,9 +30,13 @@ spec:
           name: build-task-configmap
   steps:
     - name: build-and-push
-      image: busybox:latest
+      image: gcr.io/kaniko-project/executor:latest
       env:
         - name: "DOCKER_CONFIG"
           value: "/tekton/home/.docker/"
       command:
-        - ls -lrt /tekton/home/.docker
+        - /kaniko/executor
+      args:
+        - --dockerfile=$(params.pathToDockerFile)
+        - --destination=$(resources.outputs.image-registry.url)/$(DOCKER_NAMESPACE)/$(DOCKER_IMAGE_NAME):$(DOCKER_TAG)
+        - --context=$(params.pathToContext)
