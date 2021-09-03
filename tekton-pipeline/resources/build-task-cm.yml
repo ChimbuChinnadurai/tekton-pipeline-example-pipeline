@@ -6,4 +6,4 @@ metadata:
 data:
   DOCKER_TAG: "1.0.0"
   DOCKER_IMAGE_NAME: 2048-app
-  DOCKER_NAMESPACE: simbu1290/tekton-demo
+  DOCKER_NAMESPACE: simbu1290
