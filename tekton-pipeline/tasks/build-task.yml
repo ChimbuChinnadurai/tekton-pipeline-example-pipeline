@@ -21,6 +21,7 @@ spec:
   workspaces:
   - name: dockerconfig
     description: Includes a docker `config.json`
+    optional: true
     mountPath: /tekton/home/.docker
   # Get our Docker image details from the build-task-configmap configmap
   stepTemplate:
