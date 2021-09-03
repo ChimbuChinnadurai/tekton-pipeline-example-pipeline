@@ -1,3 +1,4 @@
+---
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
@@ -8,7 +9,7 @@ spec:
   - name: git-app-repo-name
   - name: git-app-repo-revision
   resourcetemplates:
-  - apiVersion: tekton.dev/v1beta1
+  - apiVersion: tekton.dev/v1alpha1
     kind: PipelineResource
     metadata:
       name: git-app-repo-$(uid)
@@ -80,18 +81,17 @@ kind: EventListener
 metadata:
   name: tekton-argocd-example-build-el
 spec:
-  serviceAccountName: tekton-triggers-admin-1
   triggers:
-    - name: github-listener
-      interceptors:
-        - ref:
-      	    name: "github"
-      	    kind: ClusterInterceptor
-      	    apiVersion: triggers.tekton.dev
-      bindings:
-        - ref: tekton-argocd-example-build-git-tb
-      template:
-        ref: tekton-argocd-example-build-tt
+  - bindings:
+    - ref: tekton-argocd-example-build-git-tb
+    template:
+      ref: tekton-argocd-example-build-tt
+  resources:
+    kubernetesResource:
+      spec:
+        template:
+          spec:
+            serviceAccountName: tekton-triggers-admin-1
 
 ---
 
@@ -101,4 +101,4 @@ metadata:
   name: tekton-argocd-example-build-el-mapping
 spec:
   prefix: /tekton-argocd-example-build-mapping/
-  service: el-tekton-argocd-example-build-el:8080
+  service: el-tekton-argocd-example-build-el-1:8080
