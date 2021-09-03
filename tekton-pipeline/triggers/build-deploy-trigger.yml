@@ -1,5 +1,5 @@
 ---
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: tekton-argocd-example-build-tt
@@ -65,7 +65,7 @@ spec:
             secretName: dockerhub-auth
 --- 
 
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: tekton-argocd-example-build-git-tb
@@ -79,7 +79,7 @@ spec:
 
 ---
 
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: tekton-argocd-example-build-el
