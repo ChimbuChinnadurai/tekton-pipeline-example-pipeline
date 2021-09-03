@@ -102,4 +102,4 @@ metadata:
   name: tekton-argocd-example-build-el-mapping
 spec:
   prefix: /tekton-argocd-example-build-mapping/
-  service: el-tekton-argocd-example-build-el-1:8080
+  service: el-tekton-argocd-example-build-el:8080
