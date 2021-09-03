@@ -26,7 +26,7 @@ spec:
           name: build-task-configmap
   steps:
     - name: build-and-push
-      image: gcr.io/kaniko-project/executor:v0.10.0
+      image: gcr.io/kaniko-project/executor:latest
       env:
         - name: "DOCKER_CONFIG"
           value: "/builder/home/.docker/"
