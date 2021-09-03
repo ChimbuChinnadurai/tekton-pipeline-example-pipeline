@@ -81,17 +81,18 @@ kind: EventListener
 metadata:
   name: tekton-argocd-example-build-el
 spec:
+  serviceAccountName: tekton-triggers-admin-1
   triggers:
-  - bindings:
-    - ref: tekton-argocd-example-build-git-tb
+  - name: github-listener
+    interceptors:
+      - ref:
+          name: "github"
+          kind: ClusterInterceptor
+          apiVersion: triggers.tekton.dev
+    bindings:
+      - ref: tekton-argocd-example-build-git-tb
     template:
       ref: tekton-argocd-example-build-tt
-  resources:
-    kubernetesResource:
-      spec:
-        template:
-          spec:
-            serviceAccountName: tekton-triggers-admin-1
 
 ---
 
