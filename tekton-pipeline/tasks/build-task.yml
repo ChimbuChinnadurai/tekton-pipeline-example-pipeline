@@ -18,7 +18,11 @@ spec:
     - name: pathToContext
       description: The build context used by Kaniko
       default: /workspace/git-app-repo
-
+  workspaces:
+  - name: dockerconfig
+    description: Includes a docker `config.json`
+    optional: true
+    mountPath: /kaniko/.docker
   # Get our Docker image details from the build-task-configmap configmap
   stepTemplate:
     envFrom:
@@ -27,9 +31,6 @@ spec:
   steps:
     - name: build-and-push
       image: gcr.io/kaniko-project/executor:latest
-      env:
-        - name: "DOCKER_CONFIG"
-          value: "/tekton/home/.docker"
       command:
         - /kaniko/executor
       args:
