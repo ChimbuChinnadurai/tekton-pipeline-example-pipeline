@@ -59,7 +59,10 @@ spec:
       - name: image-registry
         resourceRef:
           name: image-registry-$(uid)
-
+      workspaces:
+        - name: dockerconfig
+          secret:
+            secretName: dockerhub-auth
 --- 
 
 apiVersion: triggers.tekton.dev/v1alpha1
