@@ -29,7 +29,7 @@ spec:
       image: gcr.io/kaniko-project/executor:latest
       env:
         - name: "DOCKER_CONFIG"
-          value: "/tekton/creds-secrets/basic-docker-user-pass"
+          value: "/builder/home/.docker/"
       command:
         - /kaniko/executor
       args:
