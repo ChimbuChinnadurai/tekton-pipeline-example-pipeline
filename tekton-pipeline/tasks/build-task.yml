@@ -22,7 +22,7 @@ spec:
   - name: dockerconfig
     description: Includes a docker `config.json`
     optional: true
-    mountPath: /tekton/home/.docker
+    mountPath: /kaniko/.docker
   # Get our Docker image details from the build-task-configmap configmap
   stepTemplate:
     envFrom:
@@ -30,10 +30,7 @@ spec:
           name: build-task-configmap
   steps:
     - name: build-and-push
-      image: gcr.io/kaniko-project/executor:latest
-      env:
-        - name: "DOCKER_CONFIG"
-          value: "/tekton/home/.docker/"
+      image: gcr.io/kaniko-project/executor:v1.5.1@sha256:c6166717f7fe0b7da44908c986137ecfeab21f31ec3992f6e128fff8a94be8a5
       command:
         - /kaniko/executor
       args:
